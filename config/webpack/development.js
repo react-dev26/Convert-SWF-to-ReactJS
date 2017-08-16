@@ -12,6 +12,7 @@ module.exports = function development() {
       },
     },
     parts.shared(),
+    parts.images(),
     {
       devtool: 'eval-source-map',
     },
