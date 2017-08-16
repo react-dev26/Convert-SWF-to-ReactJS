@@ -1,12 +1,15 @@
 import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
+import OutlineContent from './OutlineContent';
+import NotesContent from './NotesContent';
+import SearchContent from './SearchContent';
 import styles from './styles';
 
 function Options() {
   return (
     <div style={styles.container}>
-      <h3>Statement of Finanical Position</h3>
+      <h4>Statement of Finanical Position</h4>
       <div>
         <div>
           <Tabs>
@@ -16,13 +19,13 @@ function Options() {
               <Tab>Search</Tab>
             </TabList>
             <TabPanel>
-              <h2>Content 1</h2>
+              <OutlineContent />
             </TabPanel>
             <TabPanel>
-              <h2>Content 2</h2>
+              <NotesContent />
             </TabPanel>
             <TabPanel>
-              <h2>Content 3</h2>
+              <SearchContent />
             </TabPanel>
           </Tabs>
         </div>
