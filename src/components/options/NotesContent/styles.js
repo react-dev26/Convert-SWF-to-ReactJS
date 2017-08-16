@@ -11,14 +11,24 @@ export default {
     fontSize: 10,
     display: 'flex',
     position: 'relative',
-    justifyContent: 'space-between',
   },
   title: {
     listStyle: 'none',
     padding: '10px 18px',
   },
-  itemContainer: {
+  notesBody: {
+    background: '#d0d7dc',
+    color: '#111ee2',
+    height: 400,
     padding: 0,
-    background: '#999',
+    margin: 0,
+    overflowY: 'scroll',
   },
+  contact: {
+    paddingTop: 800,
+    color: '#000',
+    fontSize: 14,
+    textAlign: 'left',
+    paddingBottom: 10,
+  }
 };

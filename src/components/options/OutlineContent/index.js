@@ -9,6 +9,10 @@ function OutlineContent() {
         <li style={styles.title}>Slide Title</li>
         <li style={styles.title}>Duration</li>
       </ul>
+      <ul style={styles.itemContainer}>
+        <li>testing</li>
+        <li>testing</li>
+      </ul>
     </div>
   );
 }
