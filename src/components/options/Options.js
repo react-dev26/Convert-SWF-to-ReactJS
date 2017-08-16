@@ -29,10 +29,7 @@ function Options() {
             </TabPanel>
           </Tabs>
         </div>
-        <div>
-        content
-        </div>
-        <div>
+        <div style={styles.progress}>
         progress
         </div>
       </div>

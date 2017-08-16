@@ -5,5 +5,12 @@ export default {
     background: '#888',
     color: 'white',
     fontFamily: 'sans-serif',
+    borderBottomRightRadius: 12,
+    borderTopRightRadius: 12,
+    marginBottom: 52,
+  },
+  progress: {
+    border: '1px solid #666',
+    margin: '0 10px',
   },
 };

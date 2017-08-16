@@ -36,7 +36,7 @@ export default {
     width: '49.999%',
   },
   slide: {
-    marginLeft: 20,
+    marginLeft: 10,
     fontSize: 12,
     fontFamily: 'sans-serif',
   },

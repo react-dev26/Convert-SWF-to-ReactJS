@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import 'styles/react-tabs.css';
+import 'styles/main.css';
+
 import App from 'containers/App';
 
 
