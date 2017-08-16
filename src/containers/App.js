@@ -1,5 +1,10 @@
 import React, { PropTypes } from 'react';
 import { RaisedButton } from 'material-ui';
+
+import Options from 'components/options/Options';
+import PptPlayer from 'components/pptPlayer/PptPlayer';
+import styles from './styles';
+
 class App extends React.Component {
 
 
@@ -7,9 +12,10 @@ class App extends React.Component {
 
     return (
       <div>
-
-        This is empty
-
+        <div style={styles.wrapper}>
+          <PptPlayer />
+          <Options />
+        </div>
       </div>
     );
   }

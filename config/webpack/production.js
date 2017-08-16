@@ -6,6 +6,7 @@ import parts from './parts';
 module.exports = function production() {
   return merge([
     parts.shared(),
+    parts.images({ limit: 15000, name: '[hash:8].[ext]' }),
     {
       devtool: 'cheap-module-source-map',
       output: {
@@ -30,6 +31,6 @@ module.exports = function production() {
           comments: false,
         }),
       ],
-    },,
+    },
   ]);
 };

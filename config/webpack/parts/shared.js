@@ -59,6 +59,10 @@ function config() {
             use: [
               {
                 loader: 'babel-loader',
+                query: {
+                  plugins: ['transform-decorators-legacy'],
+                  plugins: ['transform-runtime'],
+                },
               },
             ],
           },
