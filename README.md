@@ -5,7 +5,7 @@ This README would normally document whatever steps are necessary to get your app
 ### What is this repository for? ###
 
 * Quick summary
-  This is a repository for registering wedding and booking it with seating chart.
+  This is a repository for Statement of Financial Position app
 * Version
   1.0.0
 
