@@ -4,38 +4,38 @@
 
 #noteBody::-webkit-scrollbar-button {
   background-size: 100%;
-  height: 10px;
+  height: 12px;
   width: 10px;
   -webkit-box-shadow: inset 1px 1px 2px rgba(0,0,0,0.2);
 }
-/*#noteBody::-webkit-scrollbar-button:horizontal:increment {
-    background-image: url(https://dl.dropboxusercontent.com/u/55165267/icon2.png);
-}*/
 
-/*#noteBody::-webkit-scrollbar-button:horizontal:decrement {
-    background-image: url(https://dl.dropboxusercontent.com/u/55165267/icon4.png);
-}*/
-#noteBody::-webkit-scrollbar-button:start {
-    display: block;
-}
-#noteBody::-webkit-scrollbar-button:end {
+#noteBody::-webkit-scrollbar-button:start:decrement,
+#noteBody::-webkit-scrollbar-button:end:increment {
   display: block;
 }
+#noteBody::-webkit-scrollbar-button:start:increment,
+#noteBody::-webkit-scrollbar-button:end:decrement {
+    display: none;
+}
+#noteBody::-webkit-scrollbar-button:end:increment {
+    background-image: url(./images/scroll_cntrl_dwn.png);
+}
+
+#noteBody::-webkit-scrollbar-button:start:decrement {
+    background-image: url(./images/scroll_cntrl_up.png);
+}
+
 #noteBody::-webkit-scrollbar-track
 {
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-	background-color: #F5F5F5;
+  background-color: #bbb;
+  border-left: 2px solid #777;
+  border-right: 1px solid #777;
 }
 #noteBody::-webkit-scrollbar-thumb
 {
-	background-color: #f3f3f3;
+	background-color: #eee;
   border: 1px solid #aaa;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
-/*
-::-webkit-scrollbar-track
-::-webkit-scrollbar-track-piece
-::-webkit-scrollbar-thumb
-::-webkit-scrollbar-corner
-::-webkit-resizer */
