@@ -17,4 +17,9 @@ export default {
     listStyle: 'none',
     padding: '10px 18px',
   },
+  searchListContainer: {
+    background: '#909090',
+    width: '100%',
+    height: 323,
+  },
 };
