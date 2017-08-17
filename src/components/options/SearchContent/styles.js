@@ -2,7 +2,7 @@ export default {
   containers: {
     border: '1px solid #666',
     margin: '0 10px',
-    height: 440,
+    height: 434,
   },
   titleContainer: {
     margin: 0,
