@@ -14,10 +14,10 @@ function PptPlayer() {
           </button>
           <div style={styles.PNBtnContainer}>
             <button style={styles.btn}>
-            pre
+              <i style={styles.skip} className="material-icons">skip_previous</i>
             </button>
-            <button style={styles.btn}>
-            next
+            <button style={{...styles.btn, ...styles.btn.next}}>
+              <i style={styles.skip} className="material-icons">skip_next</i>
             </button>
           </div>
           <div style={styles.slide}>
