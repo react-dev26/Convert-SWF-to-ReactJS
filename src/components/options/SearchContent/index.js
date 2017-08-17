@@ -9,14 +9,18 @@ const KEYS_TO_FILTERS = ['product.name', 'id'];
 class OutlineContent extends Component {
   constructor() {
     super();
-    this.state = { searchTerm: ''};
+    this.state = { searchTerm: '', filter: false};
     this.searchUpdated = this.searchUpdated.bind(this);
   }
   searchUpdated(term) {
-   this.setState({searchTerm: term})
+   this.setState({
+     searchTerm: term,
+     filter: true,
+   });
   }
   render() {
     const filterProduct = data.filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS))
+    console.log(this.state.filter);
 
     return (
       <div style={styles.containers}>
@@ -34,7 +38,7 @@ class OutlineContent extends Component {
           </ul>
           {filterProduct.map(item => {
             return (
-              <div className='mail' style={{display: 'none'}} key={item.id}>
+              <div className='mail' style={(this.state.filter) ? {display: 'block'} : {display: 'none'}} key={item.id}>
                 <div className='from'>{item.product.name}</div>
               </div>
             )
