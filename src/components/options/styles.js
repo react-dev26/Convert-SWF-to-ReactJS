@@ -12,5 +12,6 @@ export default {
   progress: {
     border: '1px solid #666',
     margin: '0 10px',
+    padding: 5,
   },
 };

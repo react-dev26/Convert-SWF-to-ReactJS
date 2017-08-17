@@ -4,6 +4,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import OutlineContent from './OutlineContent';
 import NotesContent from './NotesContent';
 import SearchContent from './SearchContent';
+import ProgressBar from './ProgressBar';
 import styles from './styles';
 
 function Options() {
@@ -30,7 +31,7 @@ function Options() {
           </Tabs>
         </div>
         <div style={styles.progress}>
-        progress
+          <ProgressBar />
         </div>
       </div>
     </div>

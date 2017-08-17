@@ -1,6 +1,7 @@
 #filtering .searchBox {
   display: flex;
-  margin: 0 10px;
+  padding: 10px;
+  background-color: #909090;
 }
 #filtering .searchBox .search-input input{
   width: 200px;
@@ -13,6 +14,12 @@
   border-radius: 10px;
   padding: 0px;
   margin-left: 15px;
+  background-color: #888;
+  outline: none;
+  cursor: pointer;
+}
+#filtering .searchBox button:active {
+  border: 2px solid #777;
 }
 #filtering .searchBox button i {
   color: white;
@@ -22,4 +29,7 @@
   padding: 1px;
   margin: 1px;
   background: #777;
+}
+#filtering .searchBox button i:active{
+  border: 2px solid #585757;
 }
