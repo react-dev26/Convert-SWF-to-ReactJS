@@ -47,6 +47,6 @@ export default {
     marginLeft: 15,
   },
   updateBtn: {
-    marginLeft: 45,
+    marginLeft: 90,
   },
 };
