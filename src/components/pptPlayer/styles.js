@@ -21,19 +21,33 @@ export default {
     alignItems: 'center',
     color: 'white',
   },
-  playerBtn: {
-    padding: '8px 14px',
-    borderRadius: 8,
-  },
   PNBtnContainer: {
     marginLeft: 5,
-    position: 'relative',
     borderRadius: 5,
-    border: '2px solid #aaa',
-    height: 20,
+    border: '1px solid #5f5e5e',
+    padding: 1,
   },
   btn: {
-    width: '49.999%',
+    margin: 0,
+    padding: 2,
+    background: '#777',
+    border: '1px solid #5f5e5e',
+    borderBottomLeftRadius: 5,
+    borderTopLeftRadius: 5,
+    outline: 'none',
+    next: {
+      borderBottomLeftRadius: 0,
+      borderTopLeftRadius: 0,
+      borderTopRightRadius: 5,
+      borderBottomRightRadius: 5,
+    }
+  },
+  skip: {
+    color: 'white',
+    margin: 0,
+    background: '#777',
+    fontSize: 14,
+    padding: 0,
   },
   slide: {
     marginLeft: 10,
@@ -43,10 +57,5 @@ export default {
   span: {
     padding: 5,
   },
-  audio: {
-    marginLeft: 15,
-  },
-  updateBtn: {
-    marginLeft: 90,
-  },
+
 };
