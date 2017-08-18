@@ -21,10 +21,6 @@ export default {
     alignItems: 'center',
     color: 'white',
   },
-  playerBtn: {
-    padding: '8px 14px',
-    borderRadius: 8,
-  },
   PNBtnContainer: {
     marginLeft: 5,
     borderRadius: 5,
@@ -61,10 +57,5 @@ export default {
   span: {
     padding: 5,
   },
-  audio: {
-    marginLeft: 15,
-  },
-  updateBtn: {
-    marginLeft: 90,
-  },
+
 };
