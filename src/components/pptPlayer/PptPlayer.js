@@ -1,9 +1,12 @@
-import React from 'react';
-
+import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { handleMenuDisableState, handleMenuVisibleState } from 'actions';
+import { currentMenuVisibleSettingSelector } from 'selectors';
 import zoom from 'styles/images/zoom.png';
 import styles from './styles';
 
-function PptPlayer() {
+function PptPlayer({ currentMenuState, handleMenuVisibleState, handleMenuDisableState }) {
+  console.log('test', currentMenuState);
   return (
     <div style={styles.container}>
       <div style={styles.videoWrapper}>
@@ -35,10 +38,10 @@ function PptPlayer() {
                 <i className="material-icons">volume_up</i>
               </button>
             </div>
-            <button className="attachFile">
+            <button className="attachFile" onTouchTap={handleMenuVisibleState}>
               <i className="material-icons">attach_file</i>
             </button>
-            <button className="zoomInOut">
+            <button className="zoomInOut" onTouchTap={handleMenuDisableState}>
               <img src={zoom} alt="zoom" width="20px"/>
             </button>
           </div>
@@ -47,4 +50,17 @@ function PptPlayer() {
     </div>
   );
 }
-export default PptPlayer;
+PptPlayer.PropTypes = {
+  currentMenuState: PropTypes.bool,
+  handleMenuVisibleState: PropTypes.func,
+  handleMenuDisableState: PropTypes.func,
+};
+const mapStateToProps = state => ({
+  currentMenuState: currentMenuVisibleSettingSelector(state),
+});
+
+const mapDispatchToProps = dispatch => ({
+  handleMenuVisibleState: () => dispatch(handleMenuVisibleState()),
+  handleMenuDisableState: () => dispatch(handleMenuDisableState()),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(PptPlayer);
