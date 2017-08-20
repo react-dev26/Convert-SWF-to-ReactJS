@@ -1,29 +1,19 @@
-import React, { PropTypes } from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import injectTapEventPlugin from 'react-tap-event-plugin';
+import React, { Component } from 'react';
 
 import Options from 'components/options/Options';
 import PptPlayer from 'components/pptPlayer/PptPlayer';
 import styles from './styles';
 
-injectTapEventPlugin();
-
-class App extends React.Component {
-
+class App extends Component {
 
   render() {
-
     return (
-      <MuiThemeProvider>
-      <div>
-        <div style={styles.wrapper}>
-          <PptPlayer />
-          <Options />
-        </div>
+      <div style={styles.wrapper}>
+        <PptPlayer/>
+        <Options />
       </div>
-      </MuiThemeProvider>
     );
   }
 }
 
-export default App;
+export default (App);
