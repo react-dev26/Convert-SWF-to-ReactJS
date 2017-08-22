@@ -2,8 +2,7 @@ import React, { PropTypes } from 'react';
 import zoom from 'styles/images/zoom.png';
 import styles from './styles';
 
-function PptPlayer({ menuState, handleMenuVisibleState, handleMenuDisableState }) {
-
+function PptPlayer({ menuState, handleMenuVisibleState, handleMenuDisableState, playerState, handlePlay, handleStop }) {
   const getPlayContainerStyle = index =>
     <div style={index?styles.positionClose:styles.position}>
     {
@@ -11,8 +10,11 @@ function PptPlayer({ menuState, handleMenuVisibleState, handleMenuDisableState }
         <div style={styles.playerContainerClose}>
           <div style={styles.optionBtnClose}>
             <div className="playIcon customPlay">
-              <button>
-                <i className="material-icons">stop</i>
+              <button onTouchTap={playerState ? handleStop : handlePlay}>
+                {
+                  playerState ? <i className="material-icons">stop</i>
+                  : <i className="material-icons">play_arrow</i>
+                }
               </button>
             </div>
             <div style={styles.PNBtnContainerClose}>
@@ -41,8 +43,11 @@ function PptPlayer({ menuState, handleMenuVisibleState, handleMenuDisableState }
         <div style={styles.playerContainerOpen}>
           <div style={styles.optionBtnOpen}>
             <div className="playIcon">
-              <button>
-                <i className="material-icons">stop</i>
+              <button onTouchTap={playerState ? handleStop : handlePlay}>
+                {
+                  playerState ? <i className="material-icons">stop</i>
+                  : <i className="material-icons">play_arrow</i>
+                }
               </button>
             </div>
             <div style={styles.PNBtnContainerOpen}>
@@ -79,7 +84,6 @@ function PptPlayer({ menuState, handleMenuVisibleState, handleMenuDisableState }
   const getPlayContainer = (
       menuState ? getPlayContainerStyle(true) : getPlayContainerStyle(false)
   )
-  console.log('test', menuState);
   return (
     <div style={menuState? styles.containerClose : styles.containerOpen}>
       <div style={menuState? styles.videoWrapperClose : styles.videoWrapperOpen}>
@@ -90,6 +94,9 @@ function PptPlayer({ menuState, handleMenuVisibleState, handleMenuDisableState }
 }
 PptPlayer.PropTypes = {
   menuState: PropTypes.bool,
+  playerState: PropTypes.bool,
+  handlePlay: PropTypes.func,
+  handleStop: PropTypes.func,
   handleMenuVisibleState: PropTypes.func,
   handleMenuDisableState: PropTypes.func,
 };

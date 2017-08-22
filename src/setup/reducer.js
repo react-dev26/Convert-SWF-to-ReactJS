@@ -3,6 +3,6 @@ import viewReducer from 'reducers';
 
 export default function createReducer() {
   return combineReducers({
-    viewSetting: viewReducer,
+    setting: viewReducer,
   });
 }
