@@ -6285,6 +6285,10 @@ react-measure@^1.4.7:
     prop-types "^15.5.4"
     resize-observer-polyfill "^1.4.1"
 
+react-media-slider@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/react-media-slider/-/react-media-slider-0.2.0.tgz#f696cb56d4671838de1497a188ad7f70cc851080"
+
 react-photo-gallery@^5.3.0:
   version "5.6.1"
   resolved "https://registry.yarnpkg.com/react-photo-gallery/-/react-photo-gallery-5.6.1.tgz#f905ea4a916d8286ba2d501a05754387a68dfc82"

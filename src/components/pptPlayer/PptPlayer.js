@@ -2,7 +2,11 @@ import React, { PropTypes } from 'react';
 import zoom from 'styles/images/zoom.png';
 import styles from './styles';
 
-function PptPlayer({ menuState, handleMenuVisibleState, handleMenuDisableState, playerState, handlePlay, handleStop }) {
+function PptPlayer(
+  { menuState, handleMenuVisibleState, handleMenuDisableState, playerState, handlePlay
+    , handleStop, currentItem, handleNextPlayer, handlePrePlayer })
+{
+  console.log('test', currentItem);
   const getPlayContainerStyle = index =>
     <div style={index?styles.positionClose:styles.position}>
     {
@@ -18,10 +22,14 @@ function PptPlayer({ menuState, handleMenuVisibleState, handleMenuDisableState, 
               </button>
             </div>
             <div style={styles.PNBtnContainerClose}>
-              <button style={styles.btn}>
+              <button style={styles.btn} onTouchTap={() => {
+                handlePrePlayer(currentItem - 1);
+              }}>
                 <i style={styles.skip} className="material-icons">skip_previous</i>
               </button>
-              <button style={{...styles.btn, ...styles.btn.next}}>
+              <button style={{...styles.btn, ...styles.btn.next}} onTouchTap={() => {
+                handleNextPlayer(currentItem + 1);
+              }}>
                 <i style={styles.skip} className="material-icons">skip_next</i>
               </button>
             </div>
@@ -51,10 +59,14 @@ function PptPlayer({ menuState, handleMenuVisibleState, handleMenuDisableState, 
               </button>
             </div>
             <div style={styles.PNBtnContainerOpen}>
-              <button style={styles.btn}>
+              <button style={styles.btn} onTouchTap={() => {
+                handlePrePlayer(currentItem - 1);
+              }}>
                 <i style={styles.skip} className="material-icons">skip_previous</i>
               </button>
-              <button style={{...styles.btn, ...styles.btn.next}}>
+              <button style={{...styles.btn, ...styles.btn.next}} onTouchTap={() => {
+                handleNextPlayer(currentItem + 1);
+              }}>
                 <i style={styles.skip} className="material-icons">skip_next</i>
               </button>
             </div>
@@ -95,10 +107,13 @@ function PptPlayer({ menuState, handleMenuVisibleState, handleMenuDisableState, 
 PptPlayer.PropTypes = {
   menuState: PropTypes.bool,
   playerState: PropTypes.bool,
+  currentItem: PropTypes.number,
   handlePlay: PropTypes.func,
   handleStop: PropTypes.func,
   handleMenuVisibleState: PropTypes.func,
   handleMenuDisableState: PropTypes.func,
+  handleNextPlayer: PropTypes.func,
+  handlePrePlayer: PropTypes.func,
 };
 
 export default PptPlayer;
