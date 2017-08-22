@@ -20,7 +20,7 @@ export default {
   },
   videoWrapperClose: {
     background: '#ccc',
-    padding: 285,
+    padding: 340,
     flex: 1,
   },
   playerContainerOpen: {

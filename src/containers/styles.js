@@ -7,4 +7,12 @@ export default {
   wrapperOpen: {
     margin: '80px 30px',
   },
+  mainBtn: {
+    margin: 0,
+  },
+  mainBtnClose: {
+    right: 20,
+    marginTop: -25,
+    bottom: 'inherit',
+  },
 };
