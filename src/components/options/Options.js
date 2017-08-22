@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 import OutlineContent from './OutlineContent';
@@ -7,9 +7,9 @@ import SearchContent from './SearchContent';
 import ProgressBar from './ProgressBar';
 import styles from './styles';
 
-function Options() {
+function Options({ menuState }) {
   return (
-    <div style={styles.container}>
+    <div style={menuState ? styles.disable : styles.container}>
       <h4>Statement of Finanical Position</h4>
       <div>
         <div>
@@ -37,5 +37,10 @@ function Options() {
     </div>
   );
 }
-
+Options.PropTypes = {
+  menuState: PropTypes.bool,
+};
+Options.defaultProps = {
+  menuState: null,
+};
 export default Options;

@@ -9,6 +9,9 @@ export default {
     borderTopRightRadius: 12,
     marginBottom: 52,
   },
+  disable: {
+    display: 'none',
+  },
   progress: {
     border: '1px solid #666',
     margin: '0 10px',
