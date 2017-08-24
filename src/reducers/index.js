@@ -8,12 +8,14 @@ import {
   INACTIVE_PLAY,
   NEXT_ITEM,
   PRE_ITEM,
+  SET_DATA,
 } from '../constants';
 
 const initialState = fromJS({
   menuViewState: false,
   playerState: false,
   selectedItem: 1,
+  data: [],
 });
 const maxSliderCounter = 90;
 const minSlideCounter = 1;
@@ -44,5 +46,6 @@ export default handleActions({
     }
 
   },
-
+  [SET_DATA]: (state, action) =>
+    state.set('data', fromJS(action.payload)),
 }, initialState);

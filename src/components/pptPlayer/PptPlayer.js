@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import ReactPlayer from 'react-player';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 
 import zoom from 'styles/images/zoom.png';
 import styles from './styles';
@@ -17,8 +18,12 @@ function PptPlayer(
     handlePopDown,
     handlePopUp,
     currentPopState,
+    data,
   })
 {
+  const selectedContent = data.getIn(['contents', (0)]);
+  const url = selectedContent && selectedContent.get('url');
+  console.log('url', url);
   const getPlayContainerStyle = index =>
     <div style={index?styles.positionClose:styles.position}>
     {
@@ -113,8 +118,8 @@ function PptPlayer(
   return (
     <div style={menuState? styles.containerClose : styles.containerOpen}>
       {
-        playerState ? <ReactPlayer url='data/s.mp4' playing width='inherit' height='inherit'/>
-        : <ReactPlayer url='data/s.mp4' width='inherit' height='inherit'/>
+        playerState ? <ReactPlayer url={url} playing width='inherit' height='inherit'/>
+        : <ReactPlayer url={url} width='inherit' height='inherit'/>
       }
 
       {getPlayContainer}
@@ -134,6 +139,7 @@ PptPlayer.PropTypes = {
   handlePopUp: PropTypes.func,
   handlePopDown: PropTypes.func,
   currentPopState: PropTypes.bool,
+  data: ImmutablePropTypes.map,
 };
 
 export default PptPlayer;

@@ -6,3 +6,5 @@ export const NEXT_ITEM = 'selectedItem/NEXT_ITEM';
 export const PRE_ITEM = 'selectedItem/PRE_ITEM';
 export const POPUP_STATE = 'popup';
 export const POPDOWN_STATE = 'popdown';
+export const LOAD_DATA = 'loadData';
+export const SET_DATA = 'setData';

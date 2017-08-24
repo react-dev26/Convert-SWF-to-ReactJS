@@ -6,6 +6,8 @@ import {
   INACTIVE_PLAY,
   NEXT_ITEM,
   PRE_ITEM,
+  LOAD_DATA,
+  SET_DATA,
 } from '../constants';
 
 export const handleMenuDisableState = createAction(
@@ -32,4 +34,12 @@ export const handleNextPlayer = createAction(
 export const handlePrePlayer = createAction(
   PRE_ITEM,
   index => index,
+);
+
+export const setProduct = createAction(
+  SET_DATA,
+);
+
+export const loadData = createAction(
+  LOAD_DATA,
 );

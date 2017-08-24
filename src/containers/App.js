@@ -1,8 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { handleMenuDisableState, handleMenuVisibleState, handlePlay, handleStop, handleNextPlayer, handlePrePlayer } from 'actions';
+import ImmutablePropTypes from 'react-immutable-proptypes';
+import { handleMenuDisableState, handleMenuVisibleState, handlePlay, handleStop, handleNextPlayer, handlePrePlayer, loadData } from 'actions';
 import { handlePopUp, handlePopDown } from 'actions/popupAction';
-import { currentMenuVisibleSettingSelector, currentPlayerSettingSelector, currentItemSelector } from 'selectors';
+import { currentMenuVisibleSettingSelector, currentPlayerSettingSelector, currentItemSelector, dataSelector } from 'selectors';
 import { currentPopStateSelector } from 'selectors/popupSelector';
 import Options from 'components/options/Options';
 import PptPlayer from 'components/pptPlayer/PptPlayer';
@@ -14,6 +15,7 @@ const mapStateToProps = state => ({
   currentMenuState: currentMenuVisibleSettingSelector(state),
   currentPlayerState: currentPlayerSettingSelector(state),
   currentPopState: currentPopStateSelector(state),
+  data: dataSelector(state),
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -25,6 +27,7 @@ const mapDispatchToProps = dispatch => ({
   handlePrePlayer: index => dispatch(handlePrePlayer(index)),
   handlePopDown: () => dispatch(handlePopDown()),
   handlePopUp: () => dispatch(handlePopUp()),
+  loadData: () => dispatch(loadData()),
 })
 class App extends Component {
 
@@ -33,6 +36,7 @@ static PropTypes = {
   currentPlayerState: PropTypes.bool,
   currentItem: PropTypes.number,
   currentPopState: PropTypes.bool,
+  data: ImmutablePropTypes.map,
   handleMenuVisibleState: PropTypes.func,
   handleMenuDisableState: PropTypes.func,
   handlePlay: PropTypes.func,
@@ -41,6 +45,8 @@ static PropTypes = {
   handlePrePlayer: PropTypes.func,
   handlePopUp: PropTypes.func,
   handlePopDown: PropTypes.func,
+  loadData: PropTypes.func,
+
 }
 
 static defaultProps = {
@@ -56,8 +62,14 @@ static defaultProps = {
   handlePopUp: () =>{},
   handlePopDown: () =>{},
 }
-
+componentDidMount() {
+  this.props.loadData();
+}
   render() {
+    const { data } = this.props;
+    const temp = data.getIn(['contents', (0)]);
+    console.log('test', data);
+    console.log('temp', temp && temp.get('url'));
     return (
       <div className="wrapper" style={this.props.currentMenuState? styles.wrapperOpen : styles.wrapperClose}>
         <PptPlayer
@@ -73,6 +85,7 @@ static defaultProps = {
           currentPopState={this.props.currentPopState}
           handlePopUp={this.props.handlePopUp}
           handlePopDown={this.props.handlePopDown}
+          data={this.props.data}
         />
         {
           this.props.currentPopState? <PopUp handlePopDown={this.props.handlePopDown}/>
