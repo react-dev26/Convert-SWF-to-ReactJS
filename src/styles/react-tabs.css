@@ -14,7 +14,9 @@
   list-style: none;
   padding: 12px 29px;
   cursor: pointer;
-  background: #777;
+  background:linear-gradient(to bottom, #999 5%, #777 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#999', endColorstr='#777',GradientType=0);
+	background-color:#999;
   border-color: #666;
   border-radius: 5px 5px 0 0;
   width: 33.333%;

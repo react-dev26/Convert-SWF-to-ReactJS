@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux-immutable';
 import viewReducer from 'reducers';
+import popupReducer from 'reducers/popupReducer';
 
 export default function createReducer() {
   return combineReducers({
-    viewSetting: viewReducer,
+    setting: viewReducer,
+    popupSetting: popupReducer,
   });
 }

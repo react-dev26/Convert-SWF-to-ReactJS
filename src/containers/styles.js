@@ -1,7 +1,18 @@
 export default {
-  wrapper: {
+  wrapperClose: {
     display: 'flex',
     position: 'relative',
+    margin: '80px 15%',
+  },
+  wrapperOpen: {
     margin: '80px 30px',
-  }
+  },
+  mainBtn: {
+    margin: 0,
+  },
+  mainBtnClose: {
+    right: 20,
+    marginTop: -25,
+    bottom: 'inherit',
+  },
 };

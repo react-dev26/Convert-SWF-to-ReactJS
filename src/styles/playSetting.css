@@ -10,18 +10,25 @@
   border: 1px solid #5f5e5e;
   border-radius: 10px;
 }
+.customPlay {
+  margin: 7px;
+}
 .playIcon button {
   border-radius: 8px;
   padding: 0 10px;
   margin: 0;
-  background: #777;
+  background:linear-gradient(to bottom, #999 5%, #777 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#999', endColorstr='#777',GradientType=0);
+	background-color:#999;
   border: 1px solid #5f5e5e;
   outline: none;
   cursor: pointer;
 }
 .playIcon button i {
   color: white;
-  background: #777;
+  background:linear-gradient(to bottom, #999 5%, #777 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#999', endColorstr='#777',GradientType=0);
+	background-color:#999;
   margin: 0;
   padding: 0;
   font-size: 21px;
@@ -32,7 +39,15 @@
   border: 1px solid #5f5e5e;
   border-radius: 8px;
 }
-.volumeIcon button {
+.volumeIconClose {
+  padding: 1px;
+  border: 1px solid #5f5e5e;
+  border-radius: 8px;
+}
+.span {
+  margin-left: 5px;
+}
+.volumeIcon button, .volumeIconClose button {
   padding: 2px 4px;
   margin: 0px;
   background: #777;
@@ -42,7 +57,8 @@
   outline: none;
 
 }
-.volumeIcon button .material-icons{
+
+.volumeIcon button .material-icons, .volumeIconClose button .material-icons{
   color: white;
   font-size: 15px;
 }
