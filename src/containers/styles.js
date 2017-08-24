@@ -2,7 +2,7 @@ export default {
   wrapperClose: {
     display: 'flex',
     position: 'relative',
-    margin: '80px 30px',
+    margin: '80px 15%',
   },
   wrapperOpen: {
     margin: '80px 30px',

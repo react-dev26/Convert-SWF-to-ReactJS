@@ -1,12 +1,24 @@
 import React, { PropTypes } from 'react';
+import ReactPlayer from 'react-player';
+
 import zoom from 'styles/images/zoom.png';
 import styles from './styles';
 
 function PptPlayer(
-  { menuState, handleMenuVisibleState, handleMenuDisableState, playerState, handlePlay
-    , handleStop, currentItem, handleNextPlayer, handlePrePlayer })
+  { menuState,
+    handleMenuVisibleState,
+    handleMenuDisableState,
+    playerState,
+    handlePlay,
+    handleStop,
+    currentItem,
+    handleNextPlayer,
+    handlePrePlayer,
+    handlePopDown,
+    handlePopUp,
+    currentPopState,
+  })
 {
-  console.log('test', currentItem);
   const getPlayContainerStyle = index =>
     <div style={index?styles.positionClose:styles.position}>
     {
@@ -72,8 +84,10 @@ function PptPlayer(
             </div>
             <div style={styles.slide}>
               <span style={styles.span}>Slide</span>
-              <span style={styles.span}>2 / 75</span>
-              <span style={styles.span}>Stopped</span>
+              <span style={styles.span}>{currentItem} / 90</span>
+              {
+                playerState ? <span style={styles.span}>Playing</span> : <span style={styles.span}>Stopped</span>
+              }
             </div>
             <div className="playRightIconContainer">
               <span>time frame</span>
@@ -82,7 +96,7 @@ function PptPlayer(
                   <i className="material-icons">volume_up</i>
                 </button>
               </div>
-              <button className="attachFile" onTouchTap={handleMenuVisibleState}>
+              <button className="attachFile" onTouchTap={currentPopState ? handlePopDown : handlePopUp}>
                 <i className="material-icons">attach_file</i>
               </button>
               <button className="zoomInOut" onTouchTap={handleMenuDisableState}>
@@ -98,8 +112,11 @@ function PptPlayer(
   )
   return (
     <div style={menuState? styles.containerClose : styles.containerOpen}>
-      <div style={menuState? styles.videoWrapperClose : styles.videoWrapperOpen}>
-      </div>
+      {
+        playerState ? <ReactPlayer url='data/s.mp4' playing width='inherit' height='inherit'/>
+        : <ReactPlayer url='data/s.mp4' width='inherit' height='inherit'/>
+      }
+
       {getPlayContainer}
     </div>
   );
@@ -114,6 +131,9 @@ PptPlayer.PropTypes = {
   handleMenuDisableState: PropTypes.func,
   handleNextPlayer: PropTypes.func,
   handlePrePlayer: PropTypes.func,
+  handlePopUp: PropTypes.func,
+  handlePopDown: PropTypes.func,
+  currentPopState: PropTypes.bool,
 };
 
 export default PptPlayer;

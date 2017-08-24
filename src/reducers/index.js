@@ -13,7 +13,7 @@ import {
 const initialState = fromJS({
   menuViewState: false,
   playerState: false,
-  selectedItem: 0,
+  selectedItem: 1,
 });
 const maxSliderCounter = 90;
 const minSlideCounter = 1;
