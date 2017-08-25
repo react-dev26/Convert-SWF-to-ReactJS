@@ -134,7 +134,7 @@ class PptPlayer extends Component {
     return (
       <div className="player-content" style={menuState? styles.containerClose : styles.containerOpen}>
         {
-          playerState ? <ReactPlayer url={url} playing width='950px' height='713px' style={{background: '#000'}}/>
+          playerState ? <ReactPlayer url={url} playing width='951px' height='713px' style={{background: '#000'}}/>
           : <ReactPlayer url={url} width='951px' height='713px' style={{background: '#000'}}/>
         }
 

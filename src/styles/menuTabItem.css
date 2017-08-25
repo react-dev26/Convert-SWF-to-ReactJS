@@ -103,3 +103,6 @@
 #product-container:active {
   background: #666;
 }
+#product-container .material-icons {
+  font-size: 18px;
+}
