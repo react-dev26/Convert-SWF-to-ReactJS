@@ -4,7 +4,6 @@ import ProductList from './ProductList';
 import styles from './styles';
 
 function OutlineContent({ getProductList }) {
-  console.log('content', getProductList);
   return (
     <div style={styles.containers}>
       <ul style={styles.titleContainer}>

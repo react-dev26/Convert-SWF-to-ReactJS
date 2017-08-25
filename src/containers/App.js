@@ -74,8 +74,6 @@ componentDidMount() {
       getUrl[i] = data.getIn(['contents', (i)]) && data.getIn(['contents', (i)]).get('url');
       getTitle[i] = data.getIn(['contents', (i)]) && data.getIn(['contents', (i)]).get('title');
     }
-    console.log('count', getUrl);
-    console.log('test', getTitle);
     return (
       <div className="wrapper" style={this.props.currentMenuState? styles.wrapperOpen : styles.wrapperClose}>
         <PptPlayer
