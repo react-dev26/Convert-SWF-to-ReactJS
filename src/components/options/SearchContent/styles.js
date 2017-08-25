@@ -2,7 +2,7 @@ export default {
   containers: {
     border: '1px solid #666',
     margin: '0 10px',
-    height: 434,
+    height: 570,
   },
   titleContainer: {
     margin: 0,
@@ -20,6 +20,6 @@ export default {
   searchListContainer: {
     background: '#909090',
     width: '100%',
-    height: 323,
+    height: 459,
   },
 };

@@ -2,7 +2,7 @@ export default {
   containers: {
     border: '1px solid #666',
     margin: '0 10px',
-    height: 440,
+    height: 570,
   },
   titleContainer: {
     margin: 0,
@@ -20,5 +20,8 @@ export default {
   itemContainer: {
     padding: 0,
     background: '#999',
+    height: 538,
+    margin: 0,
+    overflowY: 'scroll',
   },
 };

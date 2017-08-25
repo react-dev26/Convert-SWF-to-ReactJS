@@ -2,7 +2,7 @@ export default {
   containers: {
     border: '1px solid #666',
     margin: '0 10px',
-    height: 440,
+    height: 570,
   },
   titleContainer: {
     margin: 0,
@@ -19,7 +19,7 @@ export default {
   notesBody: {
     background: '#d0d7dc',
     color: '#111ee2',
-    height: 400,
+    height: 538,
     padding: 0,
     margin: 0,
     overflowY: 'scroll',

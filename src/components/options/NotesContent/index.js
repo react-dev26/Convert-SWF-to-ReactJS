@@ -9,7 +9,7 @@ function OutlineContent() {
         <li style={styles.title}>Slide Title</li>
       </ul>
       <ul id="noteBody" style={styles.notesBody}>
-        <li style={{paddingRight: 128}}>Statement of<br /> Financial Position</li>
+        <li style={{paddingRight: 185}}>Statement of<br /> Financial Position</li>
         <p style={{textAlign: 'left'}}>Current Assets</p>
         <li style={styles.contact}>@Copyright 2017 <span style={{fontStyle: 'italic'}}>nonprofit-cpa.com</span> AllRights Reserved</li>
       </ul>

@@ -67,9 +67,15 @@ componentDidMount() {
 }
   render() {
     const { data } = this.props;
-    const temp = data.getIn(['contents', (0)]);
-    console.log('test', data);
-    console.log('temp', temp && temp.get('url'));
+    const length = data.get('contents') && data.get('contents').count();
+    const getUrl = [];
+    const getTitle = [];
+    for (var i = 0; i < length; i++) {
+      getUrl[i] = data.getIn(['contents', (i)]) && data.getIn(['contents', (i)]).get('url');
+      getTitle[i] = data.getIn(['contents', (i)]) && data.getIn(['contents', (i)]).get('title');
+    }
+    console.log('count', getUrl);
+    console.log('test', getTitle);
     return (
       <div className="wrapper" style={this.props.currentMenuState? styles.wrapperOpen : styles.wrapperClose}>
         <PptPlayer
@@ -91,7 +97,7 @@ componentDidMount() {
           this.props.currentPopState? <PopUp handlePopDown={this.props.handlePopDown}/>
           : <div></div>
         }
-        <Options menuState={this.props.currentMenuState}/>
+        <Options menuState={this.props.currentMenuState} getProductList={getTitle}/>
         <div className="mainBtn" style={this.props.currentMenuState? styles.mainBtnClose:styles.mainBtn}>
           <button>Back</button>
           <button>Menu</button>

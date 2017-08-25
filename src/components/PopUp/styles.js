@@ -6,8 +6,8 @@ export default {
     width: 250,
     height: 170,
     fontFamily: 'sans-serif',
-    bottom: 51,
-    right: '30%',
+    bottom: 130,
+    right: '36%',
   },
   header: {
     padding: '6px 15px',

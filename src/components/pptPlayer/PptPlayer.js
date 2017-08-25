@@ -116,10 +116,10 @@ function PptPlayer(
       menuState ? getPlayContainerStyle(true) : getPlayContainerStyle(false)
   )
   return (
-    <div style={menuState? styles.containerClose : styles.containerOpen}>
+    <div className="player-content" style={menuState? styles.containerClose : styles.containerOpen}>
       {
-        playerState ? <ReactPlayer url={url} playing width='inherit' height='inherit'/>
-        : <ReactPlayer url={url} width='inherit' height='inherit'/>
+        playerState ? <ReactPlayer url={url} playing width='950px' height='713px'/>
+        : <ReactPlayer url={url} width='951px' height='713px'/>
       }
 
       {getPlayContainer}
