@@ -36,11 +36,13 @@ class OutlineContent extends Component {
             <li style={styles.title}>Slide Title</li>
             <li style={styles.title}>Duration</li>
           </ul>
-          <div style={styles.searchListContainer}>
+          <div id="searchResultContent" style={styles.searchListContainer}>
             {filterProduct.map(item => {
               return (
-                <div className='mail' style={(this.state.filter) ? {display: 'block'} : {display: 'none'}} key={item.id}>
-                  <div className='from'>{item.title}</div>
+                <div className="product-container" style={(this.state.filter) ? styles.searchFilterContainer : {display: 'none'}} key={item.id}>
+                  <i className="material-icons">play_arrow</i>
+                  <div style={{marginRight: 54}}>{item.title}</div>
+                  <li>00:00</li>
                 </div>
               )
             })}

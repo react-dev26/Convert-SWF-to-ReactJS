@@ -1,27 +1,27 @@
-#productListBody::-webkit-scrollbar, #noteBody::-webkit-scrollbar {
+#searchResultContent::-webkit-scrollbar, #productListBody::-webkit-scrollbar, #noteBody::-webkit-scrollbar {
   width: 14px;
 }
 
-#productListBody::-webkit-scrollbar-button, #noteBody::-webkit-scrollbar-button {
+#searchResultContent::-webkit-scrollbar-button, #productListBody::-webkit-scrollbar-button, #noteBody::-webkit-scrollbar-button {
   background-size: 100%;
   height: 12px;
   width: 10px;
   -webkit-box-shadow: inset 1px 1px 2px rgba(0,0,0,0.2);
 }
 
-#productListBody::-webkit-scrollbar-button:start:decrement, #noteBody::-webkit-scrollbar-button:start:decrement,
-#productListBody::-webkit-scrollbar-button:end:increment, #noteBody::-webkit-scrollbar-button:end:increment {
+#searchResultContent::-webkit-scrollbar-button:start:decrement, #productListBody::-webkit-scrollbar-button:start:decrement, #noteBody::-webkit-scrollbar-button:start:decrement,
+#searchResultContent::-webkit-scrollbar-button:end:increment, #productListBody::-webkit-scrollbar-button:end:increment, #noteBody::-webkit-scrollbar-button:end:increment {
   display: block;
 }
-#productListBody::-webkit-scrollbar-button:start:increment, #noteBody::-webkit-scrollbar-button:start:increment,
-#productListBody::-webkit-scrollbar-button:end:decrement, #noteBody::-webkit-scrollbar-button:end:decrement {
+#searchResultContent::-webkit-scrollbar-button:start:increment, #productListBody::-webkit-scrollbar-button:start:increment, #noteBody::-webkit-scrollbar-button:start:increment,
+#searchResultContent::-webkit-scrollbar-button:end:decrement, #productListBody::-webkit-scrollbar-button:end:decrement, #noteBody::-webkit-scrollbar-button:end:decrement {
     display: none;
 }
-#productListBody::-webkit-scrollbar-button:end:increment, #noteBody::-webkit-scrollbar-button:end:increment {
+#searchResultContent::-webkit-scrollbar-button:end:increment, #productListBody::-webkit-scrollbar-button:end:increment, #noteBody::-webkit-scrollbar-button:end:increment {
     background-image: url(./images/scroll_cntrl_dwn.png);
 }
 
-#productListBody::-webkit-scrollbar-button:start:decrement, #noteBody::-webkit-scrollbar-button:start:decrement {
+#searchResultContent::-webkit-scrollbar-button:start:decrement, #productListBody::-webkit-scrollbar-button:start:decrement, #noteBody::-webkit-scrollbar-button:start:decrement {
     background-image: url(./images/scroll_cntrl_up.png);
 }
 
@@ -31,13 +31,13 @@
   border-left: 2px solid #777;
   border-right: 1px solid #777;
 }
-#productListBody::-webkit-scrollbar-track {
+#searchResultContent::-webkit-scrollbar-track, #productListBody::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
   background-color: #bbb;
   border-left: 2px solid #777;
   border-right: 1px solid #777;
 }
-#productListBody::-webkit-scrollbar-thumb {
+#searchResultContent::-webkit-scrollbar-thumb, #productListBody::-webkit-scrollbar-thumb {
   background-color: #737272;
   border: 1px solid #777;
   border-top-right-radius: 5px;
@@ -97,12 +97,13 @@
 	position:relative;
 	top:1px;
 }
-#product-container:hover {
+.product-container:hover {
+  cursor: pointer;
   background: #2fc73e;
 }
-#product-container:active {
+.product-container:active {
   background: #666;
 }
-#product-container .material-icons {
+.product-container .material-icons {
   font-size: 18px;
 }
