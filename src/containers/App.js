@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import ImmutablePropTypes from 'react-immutable-proptypes';
-import { handleMenuDisableState, handleMenuVisibleState, handlePlay, handleStop, handleNextPlayer, handlePrePlayer, loadData } from 'actions';
+import { handleMenuDisableState, handleMenuVisibleState, handlePlay, handleStop, handleSelectItemPlayer, loadData } from 'actions';
 import { handlePopUp, handlePopDown } from 'actions/popupAction';
 import { currentMenuVisibleSettingSelector, currentPlayerSettingSelector, currentItemSelector, dataSelector } from 'selectors';
 import { currentPopStateSelector } from 'selectors/popupSelector';
@@ -23,8 +23,7 @@ const mapDispatchToProps = dispatch => ({
   handleMenuDisableState: () => dispatch(handleMenuDisableState()),
   handlePlay: () => dispatch(handlePlay()),
   handleStop: () => dispatch(handleStop()),
-  handleNextPlayer: index => dispatch(handleNextPlayer(index)),
-  handlePrePlayer: index => dispatch(handlePrePlayer(index)),
+  handleSelectItemPlayer: index => dispatch(handleSelectItemPlayer(index)),
   handlePopDown: () => dispatch(handlePopDown()),
   handlePopUp: () => dispatch(handlePopUp()),
   loadData: () => dispatch(loadData()),
@@ -57,8 +56,7 @@ static defaultProps = {
   handleMenuVisibleState: () =>{},
   handlePlay: () =>{},
   handleStop: () =>{},
-  handleNextPlayer: () =>{},
-  handlePrePlayer: () =>{},
+  handleSelectItemPlayer: () =>{},
   handlePopUp: () =>{},
   handlePopDown: () =>{},
 }
@@ -84,8 +82,7 @@ componentDidMount() {
           handlePlay={this.props.handlePlay}
           handleStop={this.props.handleStop}
           currentItem={this.props.currentItem}
-          handleNextPlayer={this.props.handleNextPlayer}
-          handlePrePlayer={this.props.handlePrePlayer}
+          handleSelectItemPlayer={this.props.handleSelectItemPlayer}
           currentPopState={this.props.currentPopState}
           handlePopUp={this.props.handlePopUp}
           handlePopDown={this.props.handlePopDown}

@@ -14,8 +14,7 @@ class PptPlayer extends Component {
     handleStop: PropTypes.func,
     handleMenuVisibleState: PropTypes.func,
     handleMenuDisableState: PropTypes.func,
-    handleNextPlayer: PropTypes.func,
-    handlePrePlayer: PropTypes.func,
+    handleSelectItemPlayer: PropTypes.func,
     handlePopUp: PropTypes.func,
     handlePopDown: PropTypes.func,
     currentPopState: PropTypes.bool,
@@ -30,8 +29,7 @@ class PptPlayer extends Component {
       handleStop,
       handleMenuVisibleState,
       handleMenuDisableState,
-      handleNextPlayer,
-      handlePrePlayer,
+      handleSelectItemPlayer,
       handlePopUp,
       handlePopDown,
       currentPopState,
@@ -56,12 +54,12 @@ class PptPlayer extends Component {
               </div>
               <div style={styles.PNBtnContainerClose}>
                 <button style={styles.btn} onTouchTap={() => {
-                  handlePrePlayer(currentItem - 1);
+                  handleSelectItemPlayer(currentItem - 1);
                 }}>
                   <i style={styles.skip} className="material-icons">skip_previous</i>
                 </button>
                 <button style={{...styles.btn, ...styles.btn.next}} onTouchTap={() => {
-                  handleNextPlayer(currentItem + 1);
+                  handleSelectItemPlayer(currentItem + 1);
                 }}>
                   <i style={styles.skip} className="material-icons">skip_next</i>
                 </button>
@@ -93,12 +91,12 @@ class PptPlayer extends Component {
               </div>
               <div style={styles.PNBtnContainerOpen}>
                 <button style={styles.btn} onTouchTap={() => {
-                  handlePrePlayer(currentItem - 1);
+                  handleSelectItemPlayer(currentItem - 1);
                 }}>
                   <i style={styles.skip} className="material-icons">skip_previous</i>
                 </button>
                 <button style={{...styles.btn, ...styles.btn.next}} onTouchTap={() => {
-                  handleNextPlayer(currentItem + 1);
+                  handleSelectItemPlayer(currentItem + 1);
                 }}>
                   <i style={styles.skip} className="material-icons">skip_next</i>
                 </button>
