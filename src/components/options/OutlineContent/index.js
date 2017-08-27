@@ -14,7 +14,7 @@ function OutlineContent({ getProductList }) {
       <ul id="productListBody" style={styles.itemContainer}>
       {
         getProductList.map(item =>
-          <ProductList key={item} content={item} />)
+          <ProductList key={item} content={item} onMourseOver={console.log('testing')}/>)
       }
       </ul>
     </div>
