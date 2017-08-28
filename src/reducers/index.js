@@ -39,5 +39,5 @@ export default handleActions({
     }
   },
   [SET_DATA]: (state, action) =>
-    state.set('data', fromJS(action.payload)),
+    state.set('data', action.payload),
 }, initialState);

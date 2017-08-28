@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import ImmutablePropTypes from 'react-immutable-proptypes';
 import { handleMenuDisableState, handleMenuVisibleState, handlePlay, handleStop, handleSelectItemPlayer, loadData } from 'actions';
 import { handlePopUp, handlePopDown } from 'actions/popupAction';
 import { currentMenuVisibleSettingSelector, currentPlayerSettingSelector, currentItemSelector, dataSelector } from 'selectors';
@@ -35,7 +34,7 @@ static PropTypes = {
   currentPlayerState: PropTypes.bool,
   currentItem: PropTypes.number,
   currentPopState: PropTypes.bool,
-  data: ImmutablePropTypes.map,
+  data: PropTypes.list,
   handleMenuVisibleState: PropTypes.func,
   handleMenuDisableState: PropTypes.func,
   handlePlay: PropTypes.func,
@@ -65,13 +64,6 @@ componentDidMount() {
 }
   render() {
     const { data } = this.props;
-    const length = data.get('contents') && data.get('contents').count();
-    const getUrl = [];
-    const getTitle = [];
-    for (var i = 0; i < length; i++) {
-      getUrl[i] = data.getIn(['contents', (i)]) && data.getIn(['contents', (i)]).get('url');
-      getTitle[i] = data.getIn(['contents', (i)]) && data.getIn(['contents', (i)]).get('title');
-    }
     return (
       <div className="wrapper" style={this.props.currentMenuState? styles.wrapperOpen : styles.wrapperClose}>
         <PptPlayer
@@ -86,13 +78,13 @@ componentDidMount() {
           currentPopState={this.props.currentPopState}
           handlePopUp={this.props.handlePopUp}
           handlePopDown={this.props.handlePopDown}
-          data={this.props.data}
+          data={data}
         />
         {
           this.props.currentPopState? <PopUp handlePopDown={this.props.handlePopDown}/>
           : <div></div>
         }
-        <Options menuState={this.props.currentMenuState} getProductList={getTitle}/>
+        <Options menuState={this.props.currentMenuState} getProductList={data}/>
         <div className="mainBtn" style={this.props.currentMenuState? styles.mainBtnClose:styles.mainBtn}>
           <button>Back</button>
           <button>Menu</button>

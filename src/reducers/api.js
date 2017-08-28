@@ -1,7 +1,6 @@
-import Data from '../data'
+import Data from 'data'
 
 export function loadData() {
-  console.log('../data');
   return fetch(`../Data`)
     .then(res => res.json());
 }

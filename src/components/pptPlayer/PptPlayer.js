@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import ReactPlayer from 'react-player';
-import ImmutablePropTypes from 'react-immutable-proptypes';
 
 import zoom from 'styles/images/zoom.png';
 import styles from './styles';
@@ -18,7 +17,7 @@ class PptPlayer extends Component {
     handlePopUp: PropTypes.func,
     handlePopDown: PropTypes.func,
     currentPopState: PropTypes.bool,
-    data: ImmutablePropTypes.map,
+    data: PropTypes.array,
   }
   render() {
     const {
@@ -35,9 +34,8 @@ class PptPlayer extends Component {
       currentPopState,
       data
     } = this.props;
-    const selectedContent = data.getIn(['contents', (currentItem-1)]);
-    const url = selectedContent && selectedContent.get('url');
-    const count = data.get('contents') && data.get('contents').count();
+    const getUrl = data.map(index => index.url);
+    const url = getUrl[currentItem-1];
     const getPlayContainerStyle = index =>
       <div style={index?styles.positionClose:styles.position}>
       {
@@ -103,7 +101,7 @@ class PptPlayer extends Component {
               </div>
               <div style={styles.slide}>
                 <span style={styles.span}>Slide</span>
-                <span style={styles.span}>{currentItem} / {count}</span>
+                <span style={styles.span}>{currentItem} / </span>
                 {
                   playerState ? <span style={styles.span}>Playing</span> : <span style={styles.span}>Stopped</span>
                 }
