@@ -35,6 +35,7 @@ class PptPlayer extends Component {
       data
     } = this.props;
     const getUrl = data.map(index => index.url);
+    const count = data.length;
     const url = getUrl[currentItem-1];
     const getPlayContainerStyle = index =>
       <div style={index?styles.positionClose:styles.position}>
@@ -101,7 +102,7 @@ class PptPlayer extends Component {
               </div>
               <div style={styles.slide}>
                 <span style={styles.span}>Slide</span>
-                <span style={styles.span}>{currentItem} / </span>
+                <span style={styles.span}>{currentItem} / {count}</span>
                 {
                   playerState ? <span style={styles.span}>Playing</span> : <span style={styles.span}>Stopped</span>
                 }

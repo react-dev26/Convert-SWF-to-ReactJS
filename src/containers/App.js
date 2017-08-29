@@ -39,8 +39,7 @@ static PropTypes = {
   handleMenuDisableState: PropTypes.func,
   handlePlay: PropTypes.func,
   handleStop: PropTypes.func,
-  handleNextPlayer: PropTypes.func,
-  handlePrePlayer: PropTypes.func,
+  handleSelectItemPlayer: PropTypes.func,
   handlePopUp: PropTypes.func,
   handlePopDown: PropTypes.func,
   loadData: PropTypes.func,
@@ -84,7 +83,7 @@ componentDidMount() {
           this.props.currentPopState? <PopUp handlePopDown={this.props.handlePopDown}/>
           : <div></div>
         }
-        <Options menuState={this.props.currentMenuState} getProductList={data}/>
+        <Options menuState={this.props.currentMenuState} getProductList={data} handleSelectItemPlayer={this.props.handleSelectItemPlayer}/>
         <div className="mainBtn" style={this.props.currentMenuState? styles.mainBtnClose:styles.mainBtn}>
           <button>Back</button>
           <button>Menu</button>

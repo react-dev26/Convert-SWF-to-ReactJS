@@ -4,6 +4,7 @@ export default {
     position: 'relative',
     padding: '80px 15%',
     background: '#ccc',
+    justifyContent: 'center',
   },
   wrapperOpen: {
     margin: '80px 30px',
