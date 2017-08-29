@@ -6,14 +6,15 @@ import {
   MENU_VISIBLE_SETTING,
   ACTIVE_PLAY,
   INACTIVE_PLAY,
-  NEXT_ITEM,
-  PRE_ITEM,
+  CURRENT_ITEM,
+  SET_DATA,
 } from '../constants';
 
 const initialState = fromJS({
   menuViewState: false,
   playerState: false,
   selectedItem: 1,
+  data: [],
 });
 const maxSliderCounter = 90;
 const minSlideCounter = 1;
@@ -26,23 +27,17 @@ export default handleActions({
     state.set('playerState', true),
   [INACTIVE_PLAY]: state =>
     state.set('playerState', false),
-  [NEXT_ITEM]: (state, action) => {
+  [CURRENT_ITEM]: (state, action) => {
     if (action.payload > maxSliderCounter) {
       return state.set('selectedItem', minSlideCounter);
     }
-    else {
-      return state.set('selectedItem', action.payload);
-    }
-  },
-
-  [PRE_ITEM]: (state, action) => {
-    if (action.payload < minSlideCounter) {
+    else if (action.payload < minSlideCounter) {
       return state.set('selectedItem', minSlideCounter);
     }
     else {
       return state.set('selectedItem', action.payload);
     }
-
   },
-
+  [SET_DATA]: (state, action) =>
+    state.set('data', action.payload),
 }, initialState);

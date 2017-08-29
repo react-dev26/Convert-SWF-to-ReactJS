@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import SearchInput, {createFilter} from 'react-search-input'
 
-import data from './filterTestingData';
+import data from 'data';
 import styles from './styles';
 
-const KEYS_TO_FILTERS = ['product.name', 'id'];
+const KEYS_TO_FILTERS = ['title', 'id'];
 
 class OutlineContent extends Component {
   constructor() {
@@ -36,11 +36,13 @@ class OutlineContent extends Component {
             <li style={styles.title}>Slide Title</li>
             <li style={styles.title}>Duration</li>
           </ul>
-          <div style={styles.searchListContainer}>
+          <div id="searchResultContent" style={styles.searchListContainer}>
             {filterProduct.map(item => {
               return (
-                <div className='mail' style={(this.state.filter) ? {display: 'block'} : {display: 'none'}} key={item.id}>
-                  <div className='from'>{item.product.name}</div>
+                <div className="product-container" style={(this.state.filter) ? styles.searchFilterContainer : {display: 'none'}} key={item.id}>
+                  <i className="material-icons">play_arrow</i>
+                  <div style={{marginRight: 54}}>{item.title}</div>
+                  <li>00:00</li>
                 </div>
               )
             })}

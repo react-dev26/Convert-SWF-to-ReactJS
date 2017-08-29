@@ -4,8 +4,10 @@ import {
   MENU_VISIBLE_SETTING,
   ACTIVE_PLAY,
   INACTIVE_PLAY,
-  NEXT_ITEM,
+  CURRENT_ITEM,
   PRE_ITEM,
+  LOAD_DATA,
+  SET_DATA,
 } from '../constants';
 
 export const handleMenuDisableState = createAction(
@@ -24,12 +26,15 @@ export const handleStop = createAction(
   INACTIVE_PLAY,
 );
 
-export const handleNextPlayer = createAction(
-  NEXT_ITEM,
+export const handleSelectItemPlayer = createAction(
+  CURRENT_ITEM,
   index => index,
 );
 
-export const handlePrePlayer = createAction(
-  PRE_ITEM,
-  index => index,
+export const setProduct = createAction(
+  SET_DATA,
+);
+
+export const loadData = createAction(
+  LOAD_DATA,
 );

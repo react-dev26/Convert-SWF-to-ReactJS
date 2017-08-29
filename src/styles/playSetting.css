@@ -85,3 +85,6 @@
   background: #777;
   border-radius: 8px;
 }
+.player-content button:hover {
+  border: 1px solid #168c20 !important;
+}

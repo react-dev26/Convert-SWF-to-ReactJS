@@ -7,7 +7,7 @@ import SearchContent from './SearchContent';
 import ProgressBar from './ProgressBar';
 import styles from './styles';
 
-function Options({ menuState }) {
+function Options({ menuState, getProductList, handleSelectItemPlayer }) {
   return (
     <div style={menuState ? styles.disable : styles.container}>
       <h4>Statement of Finanical Position</h4>
@@ -20,13 +20,13 @@ function Options({ menuState }) {
               <Tab>Search</Tab>
             </TabList>
             <TabPanel>
-              <OutlineContent />
+              <OutlineContent getProductList={getProductList} handleSelectItemPlayer={handleSelectItemPlayer}/>
             </TabPanel>
             <TabPanel>
               <NotesContent />
             </TabPanel>
             <TabPanel>
-              <SearchContent />
+              <SearchContent handleSelectItemPlayer={handleSelectItemPlayer}/>
             </TabPanel>
           </Tabs>
         </div>
@@ -39,8 +39,12 @@ function Options({ menuState }) {
 }
 Options.PropTypes = {
   menuState: PropTypes.bool,
+  getProductList: PropTypes.array,
+  handleSelectItemPlayer: PropTypes.func,
 };
 Options.defaultProps = {
   menuState: null,
+  getProductList: null,
+  handleSelectItemPlayer: () => {},
 };
 export default Options;

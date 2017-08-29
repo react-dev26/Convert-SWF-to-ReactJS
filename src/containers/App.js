@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { handleMenuDisableState, handleMenuVisibleState, handlePlay, handleStop, handleNextPlayer, handlePrePlayer } from 'actions';
+import { handleMenuDisableState, handleMenuVisibleState, handlePlay, handleStop, handleSelectItemPlayer, loadData } from 'actions';
 import { handlePopUp, handlePopDown } from 'actions/popupAction';
-import { currentMenuVisibleSettingSelector, currentPlayerSettingSelector, currentItemSelector } from 'selectors';
+import { currentMenuVisibleSettingSelector, currentPlayerSettingSelector, currentItemSelector, dataSelector } from 'selectors';
 import { currentPopStateSelector } from 'selectors/popupSelector';
 import Options from 'components/options/Options';
 import PptPlayer from 'components/pptPlayer/PptPlayer';
@@ -14,6 +14,7 @@ const mapStateToProps = state => ({
   currentMenuState: currentMenuVisibleSettingSelector(state),
   currentPlayerState: currentPlayerSettingSelector(state),
   currentPopState: currentPopStateSelector(state),
+  data: dataSelector(state),
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -21,10 +22,10 @@ const mapDispatchToProps = dispatch => ({
   handleMenuDisableState: () => dispatch(handleMenuDisableState()),
   handlePlay: () => dispatch(handlePlay()),
   handleStop: () => dispatch(handleStop()),
-  handleNextPlayer: index => dispatch(handleNextPlayer(index)),
-  handlePrePlayer: index => dispatch(handlePrePlayer(index)),
+  handleSelectItemPlayer: index => dispatch(handleSelectItemPlayer(index)),
   handlePopDown: () => dispatch(handlePopDown()),
   handlePopUp: () => dispatch(handlePopUp()),
+  loadData: () => dispatch(loadData()),
 })
 class App extends Component {
 
@@ -33,14 +34,16 @@ static PropTypes = {
   currentPlayerState: PropTypes.bool,
   currentItem: PropTypes.number,
   currentPopState: PropTypes.bool,
+  data: PropTypes.list,
   handleMenuVisibleState: PropTypes.func,
   handleMenuDisableState: PropTypes.func,
   handlePlay: PropTypes.func,
   handleStop: PropTypes.func,
-  handleNextPlayer: PropTypes.func,
-  handlePrePlayer: PropTypes.func,
+  handleSelectItemPlayer: PropTypes.func,
   handlePopUp: PropTypes.func,
   handlePopDown: PropTypes.func,
+  loadData: PropTypes.func,
+
 }
 
 static defaultProps = {
@@ -51,13 +54,15 @@ static defaultProps = {
   handleMenuVisibleState: () =>{},
   handlePlay: () =>{},
   handleStop: () =>{},
-  handleNextPlayer: () =>{},
-  handlePrePlayer: () =>{},
+  handleSelectItemPlayer: () =>{},
   handlePopUp: () =>{},
   handlePopDown: () =>{},
 }
-
+componentDidMount() {
+  this.props.loadData();
+}
   render() {
+    const { data } = this.props;
     return (
       <div className="wrapper" style={this.props.currentMenuState? styles.wrapperOpen : styles.wrapperClose}>
         <PptPlayer
@@ -68,17 +73,17 @@ static defaultProps = {
           handlePlay={this.props.handlePlay}
           handleStop={this.props.handleStop}
           currentItem={this.props.currentItem}
-          handleNextPlayer={this.props.handleNextPlayer}
-          handlePrePlayer={this.props.handlePrePlayer}
+          handleSelectItemPlayer={this.props.handleSelectItemPlayer}
           currentPopState={this.props.currentPopState}
           handlePopUp={this.props.handlePopUp}
           handlePopDown={this.props.handlePopDown}
+          data={data}
         />
         {
           this.props.currentPopState? <PopUp handlePopDown={this.props.handlePopDown}/>
           : <div></div>
         }
-        <Options menuState={this.props.currentMenuState}/>
+        <Options menuState={this.props.currentMenuState} getProductList={data} handleSelectItemPlayer={this.props.handleSelectItemPlayer}/>
         <div className="mainBtn" style={this.props.currentMenuState? styles.mainBtnClose:styles.mainBtn}>
           <button>Back</button>
           <button>Menu</button>
