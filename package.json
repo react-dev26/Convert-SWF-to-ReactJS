@@ -16,7 +16,7 @@
     "test:coverage:verify": "nyc check-coverage",
     "test:coverage:report": "nyc report --reporter=html && opn coverage/index.html",
     "prod": "cross-env NODE_ENV=production webpack-dev-server --config config/webpack/webpack.config.js --env.production",
-    "build": "cross-env NODE_ENV=production webpack --config config/webpack/webpack.config.js --env.production && mv dist/index.html dist/index.html && cp index.php dist/index.php",
+    "build": "cross-env NODE_ENV=production webpack --config config/webpack/webpack.config.js --env.production && mv dist/index.html dist/index.html && cp index.php dist/index.php && cp .htaccess dist/.htaccess",
     "build:clean": "npm run test:clean && rimraf ./dist"
   },
   "ava": {
