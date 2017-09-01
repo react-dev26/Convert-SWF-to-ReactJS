@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { handleMenuDisableState, handleMenuVisibleState, handlePlay, handleStop, handleSelectItemPlayer, loadData } from 'actions';
-import { handlePopUp, handlePopDown } from 'actions/popupAction';
+import { handlePopUp, handlePopDown, handleVolumeWidgetShow, handleVolumeWidgetHidden } from 'actions/popupAction';
 import { currentMenuVisibleSettingSelector, currentPlayerSettingSelector, currentItemSelector, dataSelector } from 'selectors';
-import { currentPopStateSelector } from 'selectors/popupSelector';
+import { currentPopStateSelector, currentVolumeSelector } from 'selectors/popupSelector';
 import Options from 'components/options/Options';
 import PptPlayer from 'components/pptPlayer/PptPlayer';
 import styles from './styles';
@@ -14,6 +14,7 @@ const mapStateToProps = state => ({
   currentPlayerState: currentPlayerSettingSelector(state),
   currentPopState: currentPopStateSelector(state),
   data: dataSelector(state),
+  currentVolumeState: currentVolumeSelector(state),
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -25,6 +26,8 @@ const mapDispatchToProps = dispatch => ({
   handlePopDown: () => dispatch(handlePopDown()),
   handlePopUp: () => dispatch(handlePopUp()),
   loadData: () => dispatch(loadData()),
+  handleVolumeWidgetHidden: () => dispatch(handleVolumeWidgetHidden()),
+  handleVolumeWidgetShow: () => dispatch(handleVolumeWidgetShow()),
 })
 
 
@@ -45,6 +48,9 @@ static PropTypes = {
   handlePopUp: PropTypes.func,
   handlePopDown: PropTypes.func,
   loadData: PropTypes.func,
+  currentVolumeState: PropTypes.bool,
+  handleVolumeWidgetShow: PropTypes.func,
+  handleVolumeWidgetHidden: PropTypes.func,
 
 }
 
@@ -52,6 +58,7 @@ static defaultProps = {
   currentMenuState: null,
   currentPlayerState: null,
   currentPopState: null,
+  currentVolumeState: null,
   handleMenuDisableState: () =>{},
   handleMenuVisibleState: () =>{},
   handlePlay: () =>{},
@@ -59,6 +66,8 @@ static defaultProps = {
   handleSelectItemPlayer: () =>{},
   handlePopUp: () =>{},
   handlePopDown: () =>{},
+  handleVolumeWidgetShow: () =>{},
+  handleVolumeWidgetHidden: () =>{},
 }
 componentDidMount() {
   this.props.loadData();
@@ -88,6 +97,10 @@ setItemId = index => {
           handlePopUp={this.props.handlePopUp}
           handlePopDown={this.props.handlePopDown}
           data={data}
+          handleVolumeWidgetShow={this.props.handleVolumeWidgetShow}
+          handleVolumeWidgetHidden={this.props.handleVolumeWidgetHidden}
+          currentVolumeState={this.props.currentVolumeState}
+
         />
         <Options menuState={this.props.currentMenuState} currentItem={this.props.currentItem} setItemId={this.setItemId} getProductList={data} handleSelectItemPlayer={this.props.handleSelectItemPlayer}/>
         <div className="mainBtn" style={this.props.currentMenuState? styles.mainBtnClose:styles.mainBtn}>

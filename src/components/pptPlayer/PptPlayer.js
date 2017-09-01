@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import ReactPlayer from 'react-player';
 
-import PopUp from 'components/PopUp';
+import Volume from './Volume';
+import PopUp from './PopUp';
 import zoom from 'styles/images/zoom.png';
 import styles from './styles';
 
@@ -19,6 +20,9 @@ class PptPlayer extends Component {
     handlePopDown: PropTypes.func,
     currentPopState: PropTypes.bool,
     data: PropTypes.array,
+    handleVolumeWidgetHidden: PropTypes.func,
+    handleVolumeWidgetShow: PropTypes.func,
+    currentVolumeState: PropTypes.bool,
   }
   setProductItem = index => {
     for (var i = 0; i < this.props.data.length; i++) {
@@ -40,7 +44,10 @@ class PptPlayer extends Component {
       handlePopUp,
       handlePopDown,
       currentPopState,
-      data
+      data,
+      handleVolumeWidgetShow,
+      handleVolumeWidgetHidden,
+      currentVolumeState,
     } = this.props;
     const getUrl = data.map(index => index.url);
     const count = data.length;
@@ -75,7 +82,7 @@ class PptPlayer extends Component {
               </div>
               <div style={styles.playRightIconContainer}>
                 <div className="volumeIconClose">
-                  <button>
+                  <button onTouchTap={ currentVolumeState ? handleVolumeWidgetHidden : handleVolumeWidgetShow}>
                     <i className="material-icons">volume_up</i>
                   </button>
                 </div>
@@ -122,7 +129,7 @@ class PptPlayer extends Component {
               <div className="playRightIconContainer">
                 <span>time frame</span>
                 <div className="volumeIcon">
-                  <button>
+                  <button onTouchTap={ currentVolumeState ? handleVolumeWidgetHidden : handleVolumeWidgetShow}>
                     <i className="material-icons">volume_up</i>
                   </button>
                 </div>
@@ -140,6 +147,7 @@ class PptPlayer extends Component {
     const getPlayContainer = (
         menuState ? getPlayContainerStyle(true) : getPlayContainerStyle(false)
     )
+    console.log('vol', currentVolumeState);
     return (
       <div className="player-content" style={menuState? styles.containerClose : styles.containerOpen}>
         {
@@ -147,7 +155,11 @@ class PptPlayer extends Component {
           : <ReactPlayer url={url} width='951px' height='713px' style={{background: '#000'}}/>
         }
         {
-          this.props.currentPopState? <PopUp handlePopDown={this.props.handlePopDown}/>
+          currentPopState? <PopUp handlePopDown={handlePopDown}/>
+          : <div></div>
+        }
+        {
+          currentVolumeState ? <Volume />
           : <div></div>
         }
         {getPlayContainer}
