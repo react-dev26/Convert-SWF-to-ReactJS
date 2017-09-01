@@ -26,10 +26,13 @@ class PptPlayer extends Component {
   }
   setProductItem = index => {
     for (var i = 0; i < this.props.data.length; i++) {
-      document.getElementById(i+1).style.background = 'inherit';
+      if (document.getElementById(i+1)) {
+        document.getElementById(i+1).style.background = 'inherit';
+      }
     }
-    const selectedItem = document.getElementById(index);
-    selectedItem.style.background = '#777';
+    if (document.getElementById(index)) {
+      document.getElementById(index).style.background = '#777';
+    }
   }
   render() {
     const {

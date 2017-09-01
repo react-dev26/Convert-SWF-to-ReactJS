@@ -23,7 +23,7 @@ function Options({ menuState, getProductList, setItemId, currentItem }) {
               <OutlineContent getProductList={getProductList} setItemId={setItemId}/>
             </TabPanel>
             <TabPanel>
-              <NotesContent/>
+              <NotesContent currentItem={currentItem}/>
             </TabPanel>
             <TabPanel>
               <SearchContent setItemId={setItemId}/>

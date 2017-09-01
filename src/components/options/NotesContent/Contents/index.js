@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react';
 import styles from './styles';
 
 function Contents({ description}) {
-  console.log('des', description);
   return (
     <ul id="noteBody" style={styles.notesBody}>
       {description}
