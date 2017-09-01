@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import SearchInput, {createFilter} from 'react-search-input'
 
 import data from 'data';
+import ProductList from './ProductList';
 import styles from './styles';
 
 const KEYS_TO_FILTERS = ['title', 'id'];
@@ -12,16 +13,21 @@ class OutlineContent extends Component {
     this.state = { searchTerm: '', filter: false};
     this.searchUpdated = this.searchUpdated.bind(this);
   }
+  static PropTypes = {
+    setItemId: PropTypes.func,
+  }
+  static defaultProps = {
+    setItemId: () => {},
+  }
   searchUpdated(term) {
    this.setState({
      searchTerm: term,
      filter: true,
    });
   }
+
   render() {
     const filterProduct = data.filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS))
-    console.log(this.state.filter);
-
     return (
       <div style={styles.containers}>
         <ul style={styles.titleContainer}>
@@ -37,15 +43,11 @@ class OutlineContent extends Component {
             <li style={styles.title}>Duration</li>
           </ul>
           <div id="searchResultContent" style={styles.searchListContainer}>
-            {filterProduct.map(item => {
-              return (
-                <div className="product-container" style={(this.state.filter) ? styles.searchFilterContainer : {display: 'none'}} key={item.id}>
-                  <i className="material-icons">play_arrow</i>
-                  <div style={{marginRight: 54}}>{item.title}</div>
-                  <li>00:00</li>
-                </div>
+            {
+              filterProduct.map(item =>
+                <ProductList id={item.id} content={item.title} filter={this.state.filter} key={item.id} onClickHandler={this.props.setItemId} />
               )
-            })}
+            }
           </div>
         </div>
       </div>

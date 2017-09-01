@@ -6,7 +6,6 @@ import { currentMenuVisibleSettingSelector, currentPlayerSettingSelector, curren
 import { currentPopStateSelector } from 'selectors/popupSelector';
 import Options from 'components/options/Options';
 import PptPlayer from 'components/pptPlayer/PptPlayer';
-import PopUp from 'components/PopUp';
 import styles from './styles';
 
 const mapStateToProps = state => ({
@@ -27,6 +26,9 @@ const mapDispatchToProps = dispatch => ({
   handlePopUp: () => dispatch(handlePopUp()),
   loadData: () => dispatch(loadData()),
 })
+
+
+
 class App extends Component {
 
 static PropTypes = {
@@ -61,6 +63,14 @@ static defaultProps = {
 componentDidMount() {
   this.props.loadData();
 }
+setItemId = index => {
+  this.props.handleSelectItemPlayer(index);
+  for (var i = 0; i < this.props.data.length; i++) {
+    document.getElementById(i+1).style.background = 'inherit';
+  }
+  const selectedItem = document.getElementById(index);
+  selectedItem.style.background = '#777';
+}
   render() {
     const { data } = this.props;
     return (
@@ -79,11 +89,7 @@ componentDidMount() {
           handlePopDown={this.props.handlePopDown}
           data={data}
         />
-        {
-          this.props.currentPopState? <PopUp handlePopDown={this.props.handlePopDown}/>
-          : <div></div>
-        }
-        <Options menuState={this.props.currentMenuState} getProductList={data} handleSelectItemPlayer={this.props.handleSelectItemPlayer}/>
+        <Options menuState={this.props.currentMenuState} currentItem={this.props.currentItem} setItemId={this.setItemId} getProductList={data} handleSelectItemPlayer={this.props.handleSelectItemPlayer}/>
         <div className="mainBtn" style={this.props.currentMenuState? styles.mainBtnClose:styles.mainBtn}>
           <button>Back</button>
           <button>Menu</button>

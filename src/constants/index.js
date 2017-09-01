@@ -7,3 +7,5 @@ export const POPUP_STATE = 'popup';
 export const POPDOWN_STATE = 'popdown';
 export const LOAD_DATA = 'loadData';
 export const SET_DATA = 'setData';
+export const VOLUME_HIDDEN = 'hidden';
+export const VOLUME_SHOW = 'show';

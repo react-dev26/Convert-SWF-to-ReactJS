@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import ReactPlayer from 'react-player';
 
+import PopUp from 'components/PopUp';
 import zoom from 'styles/images/zoom.png';
 import styles from './styles';
 
@@ -18,6 +19,13 @@ class PptPlayer extends Component {
     handlePopDown: PropTypes.func,
     currentPopState: PropTypes.bool,
     data: PropTypes.array,
+  }
+  setProductItem = index => {
+    for (var i = 0; i < this.props.data.length; i++) {
+      document.getElementById(i+1).style.background = 'inherit';
+    }
+    const selectedItem = document.getElementById(index);
+    selectedItem.style.background = '#777';
   }
   render() {
     const {
@@ -54,11 +62,13 @@ class PptPlayer extends Component {
               <div style={styles.PNBtnContainerClose}>
                 <button style={styles.btn} onTouchTap={() => {
                   handleSelectItemPlayer(currentItem - 1);
+                  this.setProductItem(currentItem - 1);
                 }}>
                   <i style={styles.skip} className="material-icons">skip_previous</i>
                 </button>
                 <button style={{...styles.btn, ...styles.btn.next}} onTouchTap={() => {
                   handleSelectItemPlayer(currentItem + 1);
+                  this.setItemId(currentItem + 1);
                 }}>
                   <i style={styles.skip} className="material-icons">skip_next</i>
                 </button>
@@ -91,11 +101,13 @@ class PptPlayer extends Component {
               <div style={styles.PNBtnContainerOpen}>
                 <button style={styles.btn} onTouchTap={() => {
                   handleSelectItemPlayer(currentItem - 1);
+                  this.setProductItem(currentItem - 1);
                 }}>
                   <i style={styles.skip} className="material-icons">skip_previous</i>
                 </button>
                 <button style={{...styles.btn, ...styles.btn.next}} onTouchTap={() => {
                   handleSelectItemPlayer(currentItem + 1);
+                  this.setProductItem(currentItem + 1);
                 }}>
                   <i style={styles.skip} className="material-icons">skip_next</i>
                 </button>
@@ -134,7 +146,10 @@ class PptPlayer extends Component {
           playerState ? <ReactPlayer url={url} playing width='951px' height='713px' style={{background: '#000'}}/>
           : <ReactPlayer url={url} width='951px' height='713px' style={{background: '#000'}}/>
         }
-
+        {
+          this.props.currentPopState? <PopUp handlePopDown={this.props.handlePopDown}/>
+          : <div></div>
+        }
         {getPlayContainer}
       </div>
     );
