@@ -35,3 +35,4 @@ This README would normally document whatever steps are necessary to get your app
 
 * Deployment instructions
   It is deployed to heroku.
+  https://nonprofit-test.herokuapp.com/
